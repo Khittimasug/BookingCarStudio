@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Dashboard : {{ request.user.usernae}} </h1>
+<h1>Dashboard : {{ request.user.username}} </h1>
 <a href="{% url 'logout' %}" class="btn btn-dark">Logout</a>
 
 {% endblock %}
