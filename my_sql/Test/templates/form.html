@@ -1,0 +1,42 @@
+{% include "components/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="form.css">
+<form  action=" " method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div style=" margin-bottom: 15px; " >
+        {{ form.name.label_tag }}
+        {{ form.name }}
+        {{ form.name.errors }}
+    </div>
+    <div style=" margin-bottom: 15px;">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}
+    </div>
+    <div style=" margin-bottom: 15px;">
+        {{ form.rank.label_tag }}
+        {{ form.rank }}
+        {{ form.rank.errors }}
+    </div>
+    <div style=" margin-bottom: 15px;">
+        {{ form.work.label_tag }}
+        {{ form.work }}
+        {{ form.work.errors }}
+    </div>
+    <div style=" margin-bottom: 15px;">
+        {{ form.work_number.label_tag }}
+        {{ form.work_number }}
+        {{ form.work_number.errors }}
+    </div>
+    <div style=" margin-bottom: 15px;">
+        {{ form.phone_number.label_tag }}
+        {{ form.phone_number }}
+        {{ form.phone_number.errors }}
+    </div>
+    
+    <button type="submit" class="btn btn-success" >Submit</button>
+</form>
+{% endblock %}
