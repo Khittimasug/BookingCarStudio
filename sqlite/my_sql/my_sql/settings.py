@@ -37,8 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Test'
+    'Test',
+    'widget_tweaks',
 ]
+
+'''AUTHENTICATION_BACKENDS=[
+    'django.countrib.auth.backedns.ModelBackend'
+]'''
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
