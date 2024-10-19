@@ -1,0 +1,13 @@
+{
+    "builds": [{
+        "src": "my_sql/wsgi.py",
+        "use": "@vercel/python",
+        "config": {"maxLambdasize": "15mb", "runtime": "python3.10.5" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "my_sql/wsgi.py"
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{% include "components/base.html" %}
+
+{% block content %}
+<head>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Upload Image</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div style=" margin-bottom: 15px;">
+                            {{ form.file.label_tag }}
+                            {{ form.file }}
+                            {{ form.file.errors }}
+                        </div>
+                        <div style=" margin-bottom: 15px;">
+                            <p>
+                            {{ form.text.label_tag }}
+                            </p>
+                            {{ form.text }}
+                            {{ form.text.errors }}
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-block">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

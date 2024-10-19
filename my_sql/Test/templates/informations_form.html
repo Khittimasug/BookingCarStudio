@@ -1,0 +1,22 @@
+{% extends "components/base.html" %}
+
+{% block content %}
+<h2>กรุณากรอกข้อมูล</h2>
+<Form>
+    <label for="fname">ชื่อ:</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    <label for="lname">นามสกุล:</label><br>
+    <input type="text" id="lname" name="lname"><br>
+    <label for="email">อีเมล์:</label><br>
+    <input type="email" id="email" name="email"><br>
+    <label for="rank">ตำแหน่ง:</label><br>
+    <input type="rank" id="rank" name="rank"><br>
+    <label for="เบอร์โทรศัพท์ที่ทำงาน">เบอร์โทรศัพท์ที่ทำงาน:</label><br>
+    <input type="เบอร์โทรศัพท์ที่ทำงาน" id="เบอร์โทรศัพท์ที่ทำงาน" name="เบอร์โทรศัพท์ที่ทำงาน"><br>
+    <label for="เบอร์โทรศัพท์มือถือ">เบอร์โทรศัพท์มือถือ:</label><br>
+    <input type="เบอร์โทรศัพท์มือถือ" id="เบอร์โทรศัพท์มือถือ" name="เบอร์โทรศัพท์มือถือ"><br>
+    <input type="submit" value="ตกลง">
+
+</Form>
+
+{% endblock %}

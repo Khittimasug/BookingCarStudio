@@ -4,9 +4,15 @@ from Test.models import users
 from Test.models import UploadedFile
 from Test.models import usersForm
 from django.urls import reverse
+<<<<<<< HEAD
 from .forms import FileUploadForm,addRegister
 
 from .forms import ExampleForm , TopForm,phone
+=======
+from .forms import FileUploadForm
+
+from .forms import ExampleForm , TopForm
+>>>>>>> parent of bc15009 (Remove)
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login, logout
 
@@ -166,6 +172,7 @@ class HomeView(FormView):
     
 def register_view(request):
     if request.method == "POST":
+<<<<<<< HEAD
         form2 = phone(request.POST)
         form3 = addRegister(request.POST)
         if form3.is_valid():
@@ -181,6 +188,17 @@ def register_view(request):
         form3 = addRegister(initial=initial_data)
         form2 = phone(initial=initial_data2)
     return render(request, 'auth/register.html',{'form3':form3,'form2':form2})
+=======
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)
+            return redirect("dashboard")
+    else:
+        initial_data = {'username':"", 'password1':"", 'password2':"",'first_name':"",'last_name':""}
+        form = UserCreationForm(initial=initial_data)
+    return render(request, 'auth/register.html',{'form':form})
+>>>>>>> parent of bc15009 (Remove)
 
 def login_view(request):
     if request.method == "POST":
