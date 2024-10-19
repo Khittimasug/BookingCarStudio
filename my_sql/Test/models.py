@@ -1,7 +1,5 @@
 from django.db import models
-from datetime import datetime, timedelta
-from django.db import models
-from django.utils.timezone import localtime
+
 
 # Create your models here.
 class users(models.Model):
@@ -28,17 +26,3 @@ class UploadedFile(models.Model):
     file = models.ImageField(upload_to='uploads/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
     text = models.TextField(null=True, max_length=500)
-
-class Booking(models.Model):
-    eventTitle = models.CharField(max_length=255)
-    startDateTime = models.DateTimeField(null=True, blank=True) 
-    endDateTime = models.DateTimeField(null=True, blank=True)
-    descript = models.TextField(blank=True)
-    
-    def save(self,*args,**kwargs):
-        self.startDateTime = self.startDateTime + timedelta(hours=7)
-        self.endDateTime = self.endDateTime + timedelta(hours=7)
-        return super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.eventTitle

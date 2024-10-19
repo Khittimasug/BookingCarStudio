@@ -21,9 +21,3 @@ class FileUploadForm(forms.ModelForm):
     class Meta:
         model = UploadedFile
         fields = ['file', 'text']
-
-class BookingForm(forms.Form):
-    eventTitle = forms.CharField(label="Event", max_length=255, required=True)
-    startDateTime = forms.DateTimeField(label="Start Date and Time", input_formats=['%Y/%m/%d %H:%M'], required=True)
-    endDateTime = forms.DateTimeField(label="End Date and Time", input_formats=['%Y/%m/%d %H:%M'], required=True)
-    descript = forms.CharField(widget=forms.Textarea, required=True, label="Description")
