@@ -1,5 +1,10 @@
 {
-    "rewrites": [
+    "builds": [{
+        "src": "my_sql/my_sql/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }],
+    "routes": [
         {
             "src": "/(.*)",
             "dest": "my_sql/my_sql/wsgi.py"
