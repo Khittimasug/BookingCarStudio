@@ -1,12 +1,11 @@
 from django import forms
 from .models import usersForm
 from .models import UploadedFile
-<<<<<<< HEAD
+
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import addPhone
-=======
->>>>>>> parent of bc15009 (Remove)
+
 
 class ExampleForm(forms.Form):
     name = forms.CharField(label='ชื่อ-นามสกุล', required=True , max_length=100)
@@ -32,7 +31,6 @@ class BookingForm(forms.Form):
     eventTitle = forms.CharField(label="Event", max_length=255, required=True)
     startDateTime = forms.DateTimeField(label="Start Date and Time", input_formats=['%Y/%m/%d %H:%M'], required=True)
     endDateTime = forms.DateTimeField(label="End Date and Time", input_formats=['%Y/%m/%d %H:%M'], required=True)
-<<<<<<< HEAD
     descript = forms.CharField(widget=forms.Textarea, required=True, label="Description")
 
 class addRegister(UserCreationForm):
@@ -50,6 +48,4 @@ class phone(forms.ModelForm):
     class Meta:
         model = addPhone
         fields = ["phone"]
-=======
     descript = forms.CharField(widget=forms.Textarea, required=True, label="Description")
->>>>>>> parent of bc15009 (Remove)
