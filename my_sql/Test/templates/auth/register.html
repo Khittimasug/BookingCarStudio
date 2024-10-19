@@ -7,39 +7,53 @@
         <h2 class="text-muted">Register</h2>
         <form method="POST" action="{% url 'register' %}">
             {% csrf_token %}
-            <div class="form-group">
-                <label for="{{ form.username.id_for_label}}">Username</label>
-                <input type="text" name="{{ form.username.name }}" class="form-control" value="{{ form.username.value }}" />
-                <span class="text-danger"> {{ form.username.errors }}  </span>
+            <div class="form3-group">
+                <label for="{{ form3.email.id_for_label}}">Email</label>
+                <input type="email" name="{{ form3.email.name }}" class="form-control" value="{{ form3.email.value }}" />
+                <span class="text-danger"> {{ form3.email.errors }}  </span>
             </div>
 
-            <div class="form-group">
-                <label for="{{ form.password1.id_for_label}}">Password</label>
-                <input type="password" name="{{ form.password1.name }}" class="form-control" value="{{ form.password1.value }}" />
-                <span class="text-danger"> {{ form.password1.errors }} </span>
+            <div class="form3-group">
+                <label for="{{ form3.username.id_for_label}}">Username</label>
+                <input type="text" name="{{ form3.username.name }}" class="form-control" value="{{ form3.username.value }}" />
+                <span class="text-danger"> {{ form3.username.errors }}  </span>
             </div>
 
-            <div class="form-group">
-                <label for="{{ form.password2.id_for_label}}">Re-Type Password</label>
-                <input type="password" name="{{ form.password2.name }}" class="form-control" value="{{ form.password2.value }}" />
-                <span class="text-danger"> {{ form.password2.errors }} </span>
+            <div class="form3-group">
+                <label for="{{ form3.password1.id_for_label}}">Password</label>
+                <input type="password" name="{{ form3.password1.name }}" class="form-control" value="{{ form3.password1.value }}" />
+                <span class="text-danger"> {{ form3.password1.errors }} </span>
             </div>
 
-            <div class="form-group">
-                <label for="{{ form.first_name.id_for_label}}">First Name</label>
-                <input type="text" name="{{ form.first_name.name }}" class="form-control" value="{{ form.first_name.value }}" />
-                <span class="text-danger"> {{ form.first_name.errors }} </span>
+            <div class="form3-group">
+                <label for="{{ form3.password2.id_for_label}}">Re-Type Password</label>
+                <input type="password" name="{{ form3.password2.name }}" class="form-control" value="{{ form3.password2.value }}" />
+                <span class="text-danger"> {{ form3.password2.errors }} </span>
             </div>
 
-            <div class="form-group">
-                <label for="{{ form.last_name.id_for_label}}">Last Name</label>
-                <input type="text" name="{{ form.last_name.name }}" class="form-control" value="{{ form.last_name.value }}" />
-                <span class="text-danger"> {{ form.last_name.errors }} </span>
+            <div class="form3-group">
+                <label for="{{ form3.first_name.id_for_label}}">First Name</label>
+                <input type="text" name="{{ form3.first_name.name }}" class="form-control" value="{{ form3.first_name.value }}" />
+                <span class="text-danger"> {{ form3.first_name.errors }} </span>
             </div>
 
+            <div class="form3-group">
+                <label for="{{ form3.last_name.id_for_label}}">Last Name</label>
+                <input type="text" name="{{ form3.last_name.name }}" class="form-control" value="{{ form3.last_name.value }}" />
+                <span class="text-danger"> {{ form3.last_name.errors }} </span>
+            </div>
+
+            <div class="form2-group">
+                <label for="{{ form2.phone.id_for_label}}">Phone Number</label>
+                <input type="text" name="{{ form2.phone.name }}" class="form-control" value="{{ form2.phone.value }}" />
+                <span class="text-danger"> {{ form2.phone.errors }} </span>
+            </div>
+            
+            <br>
             <button type="submit" class="btn btn-dark">Submit</button>
-
             <a href="{% url 'login' %}" class="btn btn-default">Login</a>
+            </br>
+
         </form>
     </div>
 </div>

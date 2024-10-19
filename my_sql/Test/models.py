@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime, timedelta
 from django.db import models
 from django.utils.timezone import localtime
+from django.contrib.auth.models import User
 
 # Create your models here.
 class users(models.Model):
@@ -42,3 +43,7 @@ class Booking(models.Model):
 
     def __str__(self):
         return self.eventTitle
+    
+class addPhone(models.Model):
+    #user = models.OneToOneField(User, on_delete=models.CASCADE,related_name="userKey")
+    phone = models.CharField(max_length=10)
