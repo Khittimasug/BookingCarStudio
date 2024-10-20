@@ -1,7 +1,7 @@
 from django import forms
 from .models import usersForm
 from .models import UploadedFile
-
+from .models import PDFUpload
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import addPhone
@@ -48,3 +48,8 @@ class phone(forms.ModelForm):
     class Meta:
         model = addPhone
         fields = ["phone"]
+
+class PDFUploadForm(forms.ModelForm):
+    class Meta:
+        model = PDFUpload
+        fields = ['title', 'pdf_file']

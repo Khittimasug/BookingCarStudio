@@ -56,6 +56,8 @@ class car(models.Model):
     type_car = models.CharField(max_length=255)
     seat = models.IntegerField()
     color = models.CharField(max_length=255)
+    #startDateTime = models.DateTimeField(null=True, blank=True) 
+    #endDateTime = models.DateTimeField(null=True, blank=True)
 
 class carBooking(models.Model):
     car_name = models.CharField(max_length=255)
@@ -65,3 +67,11 @@ class carBooking(models.Model):
     type_car = models.CharField(max_length=255)
     seat = models.IntegerField()
     color = models.CharField(max_length=255)
+
+class PDFUpload(models.Model):
+    title = models.CharField(max_length=255)
+    pdf_file = models.FileField(upload_to='pdfs/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

@@ -3,34 +3,416 @@
 {% block content %}
 <head>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    @page {
+        size: A4;
+        margin: 5mm; /* Reduced margin for fitting content */
+    }
+
+    body {
+        font-family: "TH SarabunPSK", sans-serif;
+        line-height: 1.5;
+        margin: 0;
+        padding: 10px; /* Reduced padding for fitting content */
+        background-color: white;
+        font-size: 12px;
+    }
+
+    .container {
+        max-width: 21cm;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .header {
+        text-align: left;
+        margin-bottom: 10px; /* Reduced space */
+    }
+
+    .document-info {
+        margin-bottom: 5px; /* Reduced space */
+    }
+
+    .form-number {
+        float: left;
+    }
+
+    .form-date {
+        float: right;
+    }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .subject-line {
+        margin: 10px 0; /* Reduced space */
+    }
+
+    .to-line {
+        margin-bottom: 10px; /* Reduced space */
+    }
+
+    .content-body {
+        margin-bottom: 20px; /* Reduced space */
+    }
+
+    .form-field {
+        display: inline-block;
+        min-width: 80px; /* Adjusted for compactness */
+        border-bottom: 1px dotted #000;
+        margin: 0 5px;
+    }
+
+    .signature-section {
+        margin-top: 20px; /* Reduced space */
+        text-align: right;
+    }
+
+    .approval-section {
+        margin-top: 20px; /* Reduced space */
+        border-top: 1px dashed #000;
+        padding-top: 10px; /* Reduced padding */
+    }
+
+    .approval-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px; /* Reduced gap */
+        margin-top: 10px; /* Reduced space */
+        border: 1px solid #000;
+    }
+
+    .approval-box {
+        padding: 10px; /* Reduced padding */
+        border: 1px solid #000;
+    }
+
+    .checkbox-group {
+        margin: 5px 0; /* Reduced space */
+    }
+
+    input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    .signature-line {
+        border-bottom: 1px solid #000;
+        width: 200px;
+        display: inline-block;
+        margin-top: 10px; /* Reduced space */
+    }
+    .date {
+        right: 20px
+    }
+    .approval-section {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .approval-box {
+        width: 48%; /* Adjusts the width to place boxes side by side */
+        border: 1px solid black;
+        padding: 10px;
+        box-sizing: border-box; /* Ensures padding doesn't affect the width */
+    }
+
+    .approval-box p {
+        margin: 5px 0;
+    }
+
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    .checkbox-label {
+        margin-right: 20px;
+    }
+
+    .signature-line {
+        border-bottom: 1px dotted black;
+        width: 150px;
+        margin-top: 2px;
+        display: inline-block;
+    }
+
+    .signature {
+        text-align: center;
+        margin-top: 2px;
+    }
+
+    .signature p {
+        margin: 2px 0;
+    }
+    .car{
+        text-align: center;
+    }
+</style>
 </head>
+<div class="container">
+    <div class="car">
+        <h2>แบบคำขอใช้รถยนต์คณะวิศวกรรมศาสตร์</h2>
+    </div>
+    <div class="content-body">
+        <p>
+            ส่วนงาน คณะวิศวกรรมศาสตร์ <span class="form-field" contenteditable="true"></span>
+            โทร.<span class="form-field" contenteditable="true"></span>
+        </p>
+        <div class="header">
+            <div class="document-info clearfix">
+                <div class="form-number">ที่ อว 6603.01.3/<span contenteditable="true"></span></div>
+                <div class="date">วันที่<span  contenteditable="true"></span></div>
+            </div>
+        </div>
+
+        <div class="subject-line">
+            <div class="checkbox-group">
+                เรื่อง ขออนุญาตใช้รถยนต์คณะวิศวกรรมศาสตร์ ประเภทรถ
+                <input type="checkbox"> รถตู้
+                <input type="checkbox"> รถกระบะ
+                <input type="checkbox"> รถเก๋ง
+            </div>
+        </div>
+
+        <div class="to-line">
+            เรียน คณบดีคณะวิศวกรรมศาสตร์
+        </div>
+        <p style="text-indent: 2.5em;">
+            ด้วยข้าพเจ้า <span class="form-field" contenteditable="true"></span>
+            ตำแหน่ง <span class="form-field" contenteditable="true"></span>
+            สังกัด <span class="form-field" contenteditable="true"></span>
+            หมายเลขโทรศัพท์ <span class="form-field" contenteditable="true"></span>
+        </p>
+        <p>
+            มีความประสงค์ขอใช้รถยนต์คณะวิศวกรรมศาสตร์ เดินทางไปราชการที่ <span class="form-field" contenteditable="true"></span>
+            อำเภอ <span class="form-field" contenteditable="true"></span>
+            จังหวัด <span class="form-field" contenteditable="true"></span>
+        </p>
+        <p>
+            เพื่อ <span class="form-field" contenteditable="true"></span>
+            ระยะทางไป-กลับ <span class="form-field" contenteditable="true"></span> กิโลเมตร
+            โดยมีผู้ร่วมเดินทาง จำนวน <span class="form-field" contenteditable="true"></span> คน
+        </p>
+        <p>
+            
+            คือ <span class="form-field" contenteditable="true"></span>
+            ตั้งแต่วันที่ <span class="form-field" contenteditable="true"></span>
+            เวลา <span class="form-field" contenteditable="true"></span>น.
+            จนถึงวันที่ <span class="form-field" contenteditable="true"></span>
+            เวลา <span class="form-field" contenteditable="true"></span>น.
+        </p>
+        <p>
+            
+        </p>
+        <p>
+            รวมเวลาการใช้บริการครั้งนี้ จำนวน <span class="form-field" contenteditable="true"></span>
+            วัน<span class="form-field" contenteditable="true"></span> ชั่วโมง 
+            ทั้งนี้ ขอให้นำรถไปรับผู้ขอใช้ก่อนออกเดินทางได้ที่<span class="form-field" contenteditable="true"></span>
+        </p>
+        <p>
+            เวลา<span class="form-field" contenteditable="true"></span>น.
+            อนึง ค่าใช้จ่ายผู้ร่วมเดินทาง ค่าน้ำมันเชื้อเพลิง เบี้ยเลี้ยงพนักงานขับรถ ที่พักพนักงานขับรถ ข้าพเจ้ายินดีรับผิดชอบและปฏิบัติ
+            ตามกฎระเบียบของทางราชการทุกประการ
+        </p>
+    </div>
+    <div class="signature-section">
+        <p>ลงชื่อ</p>
+        <canvas id="userSignature" class="signature-canvas" width="300" height="150"></canvas>
+        <div class="signature-controls">
+            <button onclick="clearSignature('userSignature')">ล้าง</button>
+        </div>
+        <p>ผู้ขอใช้รถยนต์</p>
+        <p>( <span class="form-field" contenteditable="true"></span> )</p>
+    </div>
+    <div class="content-body">
+        <p>
+            **********************************************************************************************************************************************************************************************************************************************
+        </p>
+        <p>
+            เรียน คณบดีคณะวิศวกรรมศาสตร์
+        </p>
+        <p>
+            เห็นควรจัดรถยนต์ หมายเลขทะเบียน……………………………………………มี……………………………………………เป็นพนักงานขับรถยนต์
+        </p>
+        <p>
+            โดย <input type="checkbox" disabled>ไม่คิดค่าธรรมเนียมการใช้บริการ <input type="checkbox" disabled>คิดค่าธรรมเนียมการใช้บริการวันละ 800 .- บาท/คัน/วัน เป็นทั้งสิ้น………………บาท
+        </p>
+        <p>
+            ทั้งนี้ ผู้ขอใช้รถยนต์จะต้องเป็นผู้ควบคุม (ตามประกาศมหาวิทยาลัยขอนแก่น ฉบับที่ 444/2556 เรื่อง หลักเกณฑ์และอัตราค่าใช้บริการรถยนต์ราชการ คณะวิศวกรรมศาสตร์ พ.ศ.2556 ลงวันที่ 12 มีนาคม พ.ศ.2556)
+        </p>
+        <div class="signature-section">
+            <p>
+                ลงชื่อ……………………………………………………
+            </p>
+            <p>
+                (……นางสาวสุวรรณี มังดินดำ…………)
+            </p>
+            <p>
+                หัวหน้าหน่วยอาคารสถานที่และยานพาหนะ
+            </p>
+        </div>
+        <div class="approval-section">
+            <!-- Left box -->
+            <div class="approval-box">
+                <p>1. ความเห็นของผู้รับผิดชอบบัญชี</p>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" disabled> เห็นควรอนุมัติ
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" disabled> อื่น ๆ
+                    </label>
+                </div>
+                <div class="signature">
+                    <div class="signature-line"></div>
+                    <p>(นางสาวกัญญณัท วรศี)<br>หัวหน้างานบริหาร</p>
+                    <div class="signature-line"></div>
+                </div>
+            </div>
+        
+            <!-- Right box -->
+            <div class="approval-box">
+                <p>2. ความเห็นของผู้มีอำนาจอนุมัติ</p>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" disabled> อนุมัติ
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" disabled> ไม่อนุมัติ
+                    </label>
+                </div>
+                <div class="signature">
+                    <div class="signature-line"></div>
+                    <p>(รองศาสตราจารย์รัตมฌี นันทสาร)<br>รองคณบดีฝ่ายบริหาร</p>
+                    <div class="signature-line"></div>
+                </div>
+            </div>
+        </div>
+    
+
+<script>
+    // Initialize all signature canvases
+    const canvasIds = ['userSignature', 'supervisorSignature', 'approverSignature'];
+    const sigCanvas = {};
+    const contexts = {};
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    canvasIds.forEach(id => {
+        sigCanvas[id] = document.getElementById(id);
+        contexts[id] = sigCanvas[id].getContext('2d');
+        
+        // Set up event listeners for each canvas
+        sigCanvas[id].addEventListener('mousedown', (e) => startDrawing(e, id));
+        sigCanvas[id].addEventListener('mousemove', (e) => draw(e, id));
+        sigCanvas[id].addEventListener('mouseup', stopDrawing);
+        sigCanvas[id].addEventListener('mouseout', stopDrawing);
+        
+        // Touch events
+        sigCanvas[id].addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousedown', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            sigCanvas[id].dispatchEvent(mouseEvent);
+        });
+        
+        sigCanvas[id].addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousemove', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            sigCanvas[id].dispatchEvent(mouseEvent);
+        });
+        
+        sigCanvas[id].addEventListener('touchend', (e) => {
+            e.preventDefault();
+            const mouseEvent = new MouseEvent('mouseup');
+            sigCanvas[id].dispatchEvent(mouseEvent);
+        });
+    });
+
+    function startDrawing(e, id) {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    function draw(e, id) {
+        if (!isDrawing) return;
+        const ctx = contexts[id];
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    function stopDrawing() {
+        isDrawing = false;
+    }
+
+    function clearSignature(id) {
+        const ctx = contexts[id];
+        ctx.clearRect(0, 0, sigCanvas[id].width, sigCanvas[id].height);
+    }
+
+    // Initialize drawing style for all canvases
+    canvasIds.forEach(id => {
+        const ctx = contexts[id];
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+    });
+</script>
+
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text-center">
-                    <h2>Upload Image</h2>
+                    <h2>อัพโหลด แบบฟอร์ม</h2>
                 </div>
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        
-                        <div style=" margin-bottom: 15px;">
-                            {{ form.file.label_tag }}
-                            {{ form.file }}
-                            {{ form.file.errors }}
-                        </div>
-                        <div style=" margin-bottom: 15px;">
-                            <p>
-                            {{ form.text.label_tag }}
-                            </p>
-                            {{ form.text }}
-                            {{ form.text.errors }}
-                        </div>
-                        
-                        <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-primary btn-block">Upload</button>
-                        </div>
+                        {{ form.as_p }}
+                        <button type="submit">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>แผนการเดินงาน</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Upload</button>
                     </form>
                 </div>
             </div>

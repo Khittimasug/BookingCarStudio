@@ -9,7 +9,7 @@ urlpatterns = [
     path('form/', views.form),
     path('form_view/', views.form_view),
     path('success/', views.success, name="success"),
-    path('upload/', views.upload_file, name='upload_file'),
+    #path('upload/', views.upload_file, name='upload_file'),
     path('uploadList/', views.uploadList, name='upload_list'),
     path('calendar/', views.HomeView.as_view(), name='home'),
     path('register/', views.register_view ,name='register'),
@@ -17,4 +17,5 @@ urlpatterns = [
     path('logout/', views.logout_view ,name='logout'),
     path('dashboard/', views.dashboard_view ,name='dashboard'),
     path('selectcar/', views.carList ,name='selectcar'),
+    path('selected/', views.upload_pdf ,name='upload_pdf'),
 ] 

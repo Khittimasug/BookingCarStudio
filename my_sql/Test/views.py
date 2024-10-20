@@ -15,7 +15,7 @@ from .forms import ExampleForm , TopForm
 
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login, logout
-
+from .forms import PDFUploadForm
 from django.shortcuts import render, redirect
 from .forms import BookingForm
 from .models import Booking
@@ -92,6 +92,9 @@ def carList(request):
     carListfile = car.objects.all()
     context = {"carListfile": carListfile}
     return render(request, 'selectcar.html', context)
+
+def selected(request):
+    return render(request, 'selected.html')
 
 def Calendar(request):
     return render(request ,"calendar.html")
@@ -194,6 +197,16 @@ def register_view(request):
         form2 = phone(initial=initial_data2)
         return render(request, 'auth/register.html',{'form3':form3,'form2':form2})
 
+def upload_pdf(request):
+    if request.method == 'POST':
+        form = PDFUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')  # Redirect to a success page
+    else:
+        form = PDFUploadForm()
+    
+    return render(request, 'upload.html', {'form': form})
 
 def login_view(request):
     if request.method == "POST":
