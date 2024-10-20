@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect ,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from Test.models import users
-from Test.models import UploadedFile
+from Test.models import UploadedFile,carBooking,car
 from Test.models import usersForm
 from django.urls import reverse
 
@@ -88,6 +88,11 @@ def uploadList(request):
     context = {"upload_file": upload_file}
     return render(request, 'upload_list.html', context)
 
+def carList(request):
+    carListfile = car.objects.all()
+    context = {"carListfile": carListfile}
+    return render(request, 'selectcar.html', context)
+
 def Calendar(request):
     return render(request ,"calendar.html")
 
@@ -118,7 +123,7 @@ class HomeView(FormView):
                 start_date_data = form.cleaned_data['startDateTime']
                 end_date_data = form.cleaned_data['endDateTime']
                 descript = form.cleaned_data['descript']
-
+            
                 if start_date_data > end_date_data:
                     messages.add_message(self.request, messages.INFO, 'Please enter the correct period.')
                     return HttpResponseRedirect(reverse("home"))
@@ -144,7 +149,7 @@ class HomeView(FormView):
 
     def get_success_url(self):
         messages.add_message(self.request, messages.INFO, 'Form submission success!!')
-        return reverse('home')
+        return reverse("selectcar")
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
@@ -168,7 +173,7 @@ class HomeView(FormView):
             "form": form,
             "booking_event": booking_event, 
         }
-
+        
         return context
     
 def register_view(request):

@@ -49,3 +49,19 @@ class addPhone(models.Model):
     #user = models.OneToOneField(User, on_delete=models.CASCADE,related_name="userKey")
     phone = models.CharField(max_length=10)
 
+class car(models.Model):
+    car_file = models.ImageField(upload_to='uploads/')
+    car_name = models.CharField(max_length=255)
+    car_id = models.CharField(max_length=255)
+    type_car = models.CharField(max_length=255)
+    seat = models.IntegerField()
+    color = models.CharField(max_length=255)
+
+class carBooking(models.Model):
+    car_name = models.CharField(max_length=255)
+    car_id = models.CharField(max_length=255)
+    startDateTime = models.DateTimeField(null=True, blank=True) 
+    endDateTime = models.DateTimeField(null=True, blank=True)
+    type_car = models.CharField(max_length=255)
+    seat = models.IntegerField()
+    color = models.CharField(max_length=255)

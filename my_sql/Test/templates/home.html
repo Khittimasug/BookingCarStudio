@@ -6,9 +6,9 @@
   <h1>BOOKING CAR EN-KKU</h1>
   <p class="">HOMEPAGE</p>
   {% if user.is_authenticated %}
-  <a href="{% url 'home' %}" class="btn btn-dark">Booking</a>
+  <a href="{% url 'home' %}" class="btn btn-dark">Booking Car</a>
   {% else %}
-  <a href="{% url 'login' %}" class="btn btn-dark">Booking</a>
+  <a href="{% url 'login' %}" class="btn btn-dark">Booking Car</a>
   {% endif %}
 </div>
 {% endblock %}
