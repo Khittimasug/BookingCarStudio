@@ -92,14 +92,14 @@ def Calendar(request):
     return render(request ,"calendar.html")
 
 def build_service(request):
-    credentials = service_account.Credentials.from_service_account_file(('calendar-django.json'))
+    credentials = service_account.Credentials.from_service_account_file(('Dj.json'))
     scoped_credentials = credentials.with_scopes(SCOPES)
     service = build("calendar", "v3", credentials=scoped_credentials)
     return service
 
 class HomeView(FormView):
     form_class = BookingForm
-    template_name = 'home.html'
+    template_name = 'calendar.html'
 
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':

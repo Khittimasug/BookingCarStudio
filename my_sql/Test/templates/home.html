@@ -3,7 +3,12 @@
 
 {% block content %}
 <div>
-  <h1>Hello World</h1>
-  <p>My name is SiR</p>
+  <h1>BOOKING CAR EN-KKU</h1>
+  <p class="">HOMEPAGE</p>
+  {% if user.is_authenticated %}
+  <a href="{% url 'home' %}" class="btn btn-dark">Booking</a>
+  {% else %}
+  <a href="{% url 'login' %}" class="btn btn-dark">Booking</a>
+  {% endif %}
 </div>
 {% endblock %}

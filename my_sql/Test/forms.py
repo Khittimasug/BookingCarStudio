@@ -48,4 +48,3 @@ class phone(forms.ModelForm):
     class Meta:
         model = addPhone
         fields = ["phone"]
-    descript = forms.CharField(widget=forms.Textarea, required=True, label="Description")
