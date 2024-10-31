@@ -1,0 +1,142 @@
+{% include 'components/base2.html' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        .bg-custom {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://pbs.twimg.com/media/DyX-IqhUYAAbb9z?format=jpg&name=large');
+            backdrop-filter: blur(10px);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: #f0f0f0;
+        }
+    
+        .card-img-top {
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .card-img-top:hover {
+            opacity: 0.8;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        
+        .user-table {
+            width: 80%; 
+            margin: 20px auto; 
+            border-collapse: collapse;
+            font-size: 16px; 
+            text-align: left;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .user-table th, .user-table td {
+            word-break: break-word;
+            padding: 18px; 
+            border-bottom: 1px solid #ddd;
+        }
+
+        .user-table thead th {
+            background-color: #A73B24;
+            color: white;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .user-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .user-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-dark:hover {
+            background-color: #555;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+        
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+        </style>
+    </head>
+    <body>
+    {% block content %}
+        <center><h2 class="bold">Welcome, {{ request.user.username }} </h2></center>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="bold">Name : </td>
+                    <td>{{ request.user.first_name }} {{ request.user.last_name }}</td>
+                </tr>
+                <tr>
+                    <td class="bold">Username : </td>
+                    <td>{{ request.user.username }}</td>
+                </tr>
+                <tr>
+                    <td class="bold">Email : </td>
+                    <td>{{ request.user.email }}</td>
+                </tr>
+                <tr>
+                    <td class="bold">Phone : </td>
+                    <td>{{ request.user.phone }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <center><a href="update/{{request.user.id}}"><button  class="btn btn-dark">Edit Profile</button></a></center>
+
+
+    <div class="container py-5 ">
+        <h1 class="text-center mb-5 bold">My Booking</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        {% if bookings.pdf.is_approve %}
+                        <label class="lable" for=""> Dowload PDF Approved </label><br><br>
+                        <a href="{{booking.pdf.pdf_file.url}}" class="btn btn-dark" > Download </a><br></br>
+                        {% endif %}
+                        {% if bookings.pdf.is_approve %}
+                        <p class="card-text bold"><small name="is_approve" class="green">Status: Approved </small></p>
+                        {% else %}
+                        <p class="card-text bold"><small name="is_approve" class="red">Status: Not Approve </small></p>
+                        {% endif %}
+                        <p class="card-text bold"><small name="car_id" class="text-muted ">Car ID: {{ bookings.car.id }} </small></p>
+                        <p class="card-text bold"><small name="car_id" class="text-muted ">Car Type: {{ bookings.car.car_type }} </small></p>
+                        <p class="card-text bold"><small name="event" class="text-muted">Event: {{ bookings.eventTitle }} </small></p>
+                        <p class="card-text bold"><small name="startDateTime" class="text-muted">Start DateTime: {{ bookings.startDateTime }} </small></p>
+                        <p class="card-text bold"><small name="endDateTime" class="text-muted">End DateTime: {{ bookings.endDateTime }} </small></p>
+                        <!--<a href="{{ files.pdf_file.url }}" class="btn btn-dark" >Download</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    {% endblock %}
+</html>

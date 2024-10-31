@@ -1,0 +1,49 @@
+{% include "components/base2.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .lable {
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<body>
+    <div class="bg-custom">
+    <div class="container2">
+        <h1>Booking Management</h1>
+        <form action="{% url 'updateRe' booking.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label class="lable" for="">Title</label><br><br>
+            <input type="text" name="title" value="{{booking.pdf.title}}"><br><br>
+            <label class="lable" for="">PDF File: {{booking.pdf}} </label><br><br>
+            <a href="{{booking.pdf.pdf_file.url}}" class="btn btn-dark" >Download</a><br></br>
+            <label class="lable" for="">Booking ID</label><br><br>
+            <input type="number" name="id" value="{{booking.id}}"><br><br>
+            <label class="lable" for="">Event</label><br><br>
+            <input type="text" name="event" value="{{booking.eventTitle}}"><br><br>
+            <label class="lable" for="">Start DateTime</label><br><br>
+            <input type="datetime" name="startDateTime" value="{{booking.startDateTime}}"><br><br>
+            <label class="lable" for="">End DateTime</label><br><br>
+            <input type="datetime" name="endDateTime" value="{{booking.endDateTime}}"><br><br>
+            <label class="lable" for="">Approve</label><br><br>
+            <input type="checkbox" name="is_approve" {% if booking.pdf.is_approve %}checked{% endif %}><br><br>
+            <button type="submit" class="btn btn-dark" >Submit</button>
+        </form>
+
+    </div>
+</div>
+</body>
+
+</html>

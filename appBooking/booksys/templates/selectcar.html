@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bg-custom {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://pbs.twimg.com/media/DyX-IqhUYAAbb9z?format=jpg&name=large');
+            backdrop-filter: blur(10px);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: #f0f0f0;
+        }
+    
+        .card-img-top {
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .card-img-top:hover {
+            opacity: 0.8;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% include "components/base2.html" %}
+
+    {% block content %}
+    <div class="bg-custom">
+    <div class="container py-5 ">
+        <h1 class="text-center mb-5 bold">Car List</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            {% csrf_token %}
+            {% for files in car %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="{{ files.file.url }}" class="card-img-top" width="640" height="240" alt="Uploaded file" data-bs-toggle="modal" data-bs-target="#imageModal{{ forloop.counter }}">
+                    <div class="card-body">
+                        <p class="card-text bold"><small name="car_id" class="text-muted">Car ID: {{ files.id }}</small></p>
+                        <p class="card-text bold"><small class="text-muted">Car Type: {{ files.car_type }}</small></p>
+                        <p class="card-text bold"><small class="text-muted">Car System: {{ files.car_system }}</small></p>
+                        <p class="card-text bold"><small class="text-muted">Car Seat: {{ files.car_seat }}</small></p>
+                        <a href="selectedCar/{{files.id}}" class="btn btn-dark">Select</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    {% csrf_token %}
+    {% for files in car %}
+    <div class="modal fade" id="imageModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="imageModalLabel{{ forloop.counter }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel{{ forloop.counter }}">Full Size Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ files.file.url }}" class="img-fluid" alt="Full size image">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+{% extends "components/base2.html" %}
+{% block content %}
+<style>
+    /* Background Styling */
+    .bg-custom {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://pbs.twimg.com/media/DyX-IqhUYAAbb9z?format=jpg&name=large');
+        backdrop-filter: blur(10px);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        color: #f0f0f0;
+    }
+
+    /* Body Styling */
+    body {
+        overflow-y: hidden;
+        margin: 0;
+    }
+
+    /* Image Container */
+    .image-container {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+    }
+    
+    .image-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Text Styling */
+    h1 {
+        color: #f0f0f0;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    h2 {
+        color: #333;
+        font-size: 1.75rem;
+    }
+
+    /* Navbar */
+    nav {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    /* Card Styling */
+    .card {
+        padding: 3rem;
+        border-radius: 12px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+        background-color: #A73B24;
+        border-color: #A73B24;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 8px;
+    }
+    
+    .btn-primary:hover {
+        background-color: #8c2d1d;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+<div class="bg-custom d-flex align-items-center">
+    <div class="container py-5">
+        <!-- Header Section -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-8 text-center text-white">
+                <h1 class="display-4 fw-bold mb-4">Welcome to EN-KKU Car Booking</h1>
+                <p style="font-size: 1.2rem;">Fast and easy car booking for EN-KKU community members.</p>
+            </div>
+        </div>
+
+        <!-- Main Card -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg p-5 mb-5 bg-white rounded">
+                    <div class="text-center mb-4">
+                        <i class="bi bi-car-front display-1 text-primary"></i>
+                    </div>
+                    
+                    <h2 class="text-center mb-4">BOOKING CAR EN-KKU</h2>
+                    
+                    {% if user.is_authenticated %}
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'selectcar' %}" class="btn btn-primary btn-lg">
+                            <i class="bi bi-calendar-check me-2"></i>Start Booking
+                        </a>
+                    </div>
+                    {% else %}
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'login' %}" class="btn btn-primary btn-lg">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Login to Book
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

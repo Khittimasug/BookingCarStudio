@@ -1,0 +1,35 @@
+{% include "components/base2.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+<body>
+    <div class="container2">
+        <h1>Update Member</h1>
+        <form action="{% url 'uprecCar' car.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="">Car Picture</label><br><br>
+            {{ form.file }}<br><br>
+            <label for="">Car Type</label><br><br>
+            <input type="text" name="car_type" value="{{car.car_type}}"><br><br>
+            <label for="">Car System</label><br><br>
+            <input type="text" name="car_system" value="{{car.car_system}}"><br><br>
+            <label for="">Car Seat</label><br><br>
+            <input type="number" name="car_seat" value="{{car.car_seat}}"><br><br>
+            <button type="submit" class="btn btn-dark">Update</button>
+        </form>
+
+    </div>
+</body>
+
+</html>

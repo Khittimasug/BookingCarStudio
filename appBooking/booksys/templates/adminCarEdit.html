@@ -1,0 +1,154 @@
+{% include "components/base2.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 1em;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        #customers {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        #customers th,
+        #customers td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 0.95em;
+        }
+
+        #customers th {
+            background-color: #A73B24;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        #customers tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        #customers td img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #up, #del, #new3 {
+            padding: 10px 20px;
+            font-size: 0.9em;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #up {
+            background-color: #5bc0de;
+        }
+
+        #up:hover {
+            background-color: #31b0d5;
+            transform: scale(1.05);
+        }
+
+        #del {
+            background-color: #d9534f;
+        }
+
+        #del:hover {
+            background-color: #c9302c;
+            transform: scale(1.05);
+        }
+
+        #new3 {
+            background-color: #A73B24;
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 1em;
+        }
+
+        #new3:hover {
+            background-color: #A73B24;
+            transform: scale(1.05);
+        }
+
+        .right {
+            float: right;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <h1>Cars Dashboard</h1>
+        <div class="right">
+            <a href="{% url 'addCar' %}" ><button id="new3">Create New Car</button></a>
+        </div>
+        <br></br>
+        <br></br>
+        <table id="customers">
+            <thead>
+                <tr>
+                <th>Id</th>
+                <th>Picture</th>
+                <th>Car Type</th>
+                <th>Car System</th>
+                <th>Car Seat</th>
+                <th colspan="2" id="mid">Action</th>
+                </tr>
+            </thead>
+            {% csrf_token %}
+            <tbody>
+            {% for x in car %}
+            <tr>
+                <td>{{x.id}}</td>
+                <td> <img src="{{ x.file.url }}" width="320" height="160"  alt="Uploaded file"></td>
+                <td>{{x.car_type}}</td>
+                <td>{{x.car_system}}</td>
+                <td>{{x.car_seat}}</td>
+                <td>
+                    <a href="update/{{x.id}}"><button id="up">EDIT</button></a>
+                </td>
+                <td>
+                    <a href="delete/{{x.id}}"><button id="del">DELETE</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    {% block content %} {% endblock %}
+</body>
+</html>
